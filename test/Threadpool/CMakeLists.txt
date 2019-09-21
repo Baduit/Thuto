@@ -1,0 +1,2 @@
+add_executable(test_threadpool_main.test test_threadpool_main.cpp)
+add_test(test_threadpool_main test_threadpool_main.test)
