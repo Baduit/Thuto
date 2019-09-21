@@ -33,12 +33,12 @@ class SimpleClock
 
 		void		reset() { _first = std::chrono::system_clock::now(); }
 		
-		Duration	getTimeDuration() { return std::chrono::system_clock::now() - _first; }
+		Duration	get_time_duration() { return std::chrono::system_clock::now() - _first; }
 
 		template<typename T>
-		auto		getDuractionAs() { return std::chrono::duration_cast<T>(getTimeDuration()); }
+		auto		get_duraction_as() { return std::chrono::duration_cast<T>(get_time_duration()); }
 
-		int64_t		getTimeNanoCount() { return getDuractionAs<std::chrono::nanoseconds>().count(); }
+		int64_t		get_time_nano_count() { return get_duraction_as<std::chrono::nanoseconds>().count(); }
 
 	private:
 		std::chrono::system_clock::time_point _first;
@@ -69,20 +69,20 @@ class AdvancedClock
 			_paused_time = {};
 		}
 		
-		auto		getTimeDuration()
+		auto		get_time_duration()
 		{
-			return _run_timer.getTimeDuration() - getTotalPauseTime();
+			return _run_timer.get_time_duration() - get_total_pause_time();
 		}
 
 		template<typename T>
-		auto		getDuractionAs()
+		auto		get_duraction_as()
 		{
-			return _run_timer.getDuractionAs<T>() - getTotalPauseTimeAs<T>();
+			return _run_timer.get_duraction_as<T>() - get_total_pause_time_as<T>();
 		}
 
-		int64_t		getTimeNanoCount()
+		int64_t		get_time_nano_count()
 		{
-			return _run_timer.getTimeNanoCount() - getTotalPauseTimeNanoCount();
+			return _run_timer.get_time_nano_count() - get_total_pause_time_nano_count();
 		}
 
 		void		pause()
@@ -95,21 +95,21 @@ class AdvancedClock
 		{
 			if (_pause_timer.has_value())
 			{
-				_paused_time += _pause_timer->getTimeDuration();
+				_paused_time += _pause_timer->get_time_duration();
 				_pause_timer.reset();
 			}
 		}
 
-		Duration	getTotalPauseTime()
+		Duration	get_total_pause_time()
 		{
-			return (_pause_timer.has_value()) ? _paused_time + _pause_timer->getTimeDuration() : _paused_time;
+			return (_pause_timer.has_value()) ? _paused_time + _pause_timer->get_time_duration() : _paused_time;
 		}
 
 		template<typename T>
-		auto 	getTotalPauseTimeAs() { return std::chrono::duration_cast<T>(getTotalPauseTime()); }
+		auto 	get_total_pause_time_as() { return std::chrono::duration_cast<T>(get_total_pause_time()); }
 
 
-		int64_t	getTotalPauseTimeNanoCount() { return getTotalPauseTimeAs<std::chrono::nanoseconds>().count(); }
+		int64_t	get_total_pause_time_nano_count() { return get_total_pause_time_as<std::chrono::nanoseconds>().count(); }
 
 	private:
 		SimpleClock							_run_timer;
