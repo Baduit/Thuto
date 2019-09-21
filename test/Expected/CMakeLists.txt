@@ -1,0 +1,2 @@
+add_executable(test_expected_main.test test_expected_main.cpp)
+add_test(test_expected_main test_expected_main.test)

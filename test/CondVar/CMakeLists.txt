@@ -1,0 +1,2 @@
+add_executable(test_cond_var_main.test test_cond_var_main.cpp)
+add_test(test_cond_var_main test_cond_var_main.test)

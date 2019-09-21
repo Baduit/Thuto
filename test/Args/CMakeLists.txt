@@ -1,0 +1,2 @@
+add_executable(test_args_main.test test_args_main.cpp)
+add_test(test_args_main test_args_main.test)
