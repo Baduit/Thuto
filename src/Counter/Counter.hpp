@@ -14,25 +14,25 @@ class BasicCounter
 {
 	public:
 		// Rule of 5 (+1)
-		BasicCounter() = default;
+		constexpr BasicCounter() = default;
 
-		BasicCounter(const BasicCounter& other) = default;
-		BasicCounter& operator=(const BasicCounter& other) = default;
+		constexpr BasicCounter(const BasicCounter& other) { _value = other.get(); };
+		constexpr BasicCounter& operator=(const BasicCounter& other) { _value = other.get(); return *this; };
 
-		BasicCounter(BasicCounter&& other) = default;
-		BasicCounter operator=(BasicCounter&& other) = default;
+		constexpr BasicCounter(BasicCounter&& other) { _value = std::move(other._value); };
+		constexpr BasicCounter operator=(BasicCounter&& other) { _value = std::move(other._value); return *this; };
 
 		virtual ~BasicCounter() = default;
 
 		// Integral values are normally about the same size as a pointer or shorter so no need to pass them as const&
-		T       get() const { return _value; }
-		void    reset() { _value = 0; }
+		constexpr T       get() const { return _value; }
+		constexpr void    reset() { _value = 0; }
 
-		BasicCounter&   operator++() { ++_value; return *this; }
-		BasicCounter&   operator++(int) { _value++; return *this; }
+		constexpr BasicCounter&   operator++() { ++_value; return *this; }
+		constexpr BasicCounter&   operator++(int) { _value++; return *this; }
 
-		BasicCounter&   operator--() { --_value; return *this; }
-		BasicCounter&   operator--(int) { _value--; return *this; }
+		constexpr BasicCounter&   operator--() { --_value; return *this; }
+		constexpr BasicCounter&   operator--(int) { _value--; return *this; }
 
 
 	private:
@@ -44,7 +44,7 @@ class BasicAtomicCounter
 {
 	public:
 		// Rule of 5 (+1)
-		BasicAtomicCounter() = default;
+		constexpr BasicAtomicCounter() = default;
 
 		BasicAtomicCounter(const BasicAtomicCounter& other) { _value = other.get(); }
 		BasicAtomicCounter& operator=(const BasicAtomicCounter& other) { _value = other.get(); return *this; }
@@ -74,7 +74,7 @@ class BasicMutexCounter
 {
 	public:
 		// Rule of 5 (+1)
-		BasicMutexCounter() = default;
+		constexpr BasicMutexCounter() = default;
 
 		BasicMutexCounter(const BasicMutexCounter& other)
 		{
@@ -155,7 +155,7 @@ class BasicSharedMutexCounter
 {
 	public:
 		// Rule of 5 (+1)
-		BasicSharedMutexCounter() = default;
+		constexpr BasicSharedMutexCounter() = default;
 
 		BasicSharedMutexCounter(const BasicSharedMutexCounter& other)
 		{
