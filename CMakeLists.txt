@@ -33,15 +33,7 @@ include_directories(Thutothmes PRIVATE
     )
 
 
-# Examples
-add_executable(counter_example ./example/Counter/counter_example_main.cpp)
-target_link_libraries(counter_example ${CMAKE_THREAD_LIBS_INIT})
+add_subdirectory(example)
 
-add_executable(timer_example ./example/Timer/timer_example_main.cpp)
-target_link_libraries(timer_example ${CMAKE_THREAD_LIBS_INIT})
-
-
-# Tests
 enable_testing()
-
 add_subdirectory(test)

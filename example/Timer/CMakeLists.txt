@@ -1,0 +1,2 @@
+add_executable(timer_example timer_example_main.cpp)
+target_link_libraries(timer_example ${CMAKE_THREAD_LIBS_INIT})
