@@ -8,7 +8,7 @@ inline int64_t nanoToMilli(int64_t nano)
 template<typename T, typename U>
 bool almost_equal(T t, U u)
 {
-    if (t <= (u + 2) && t >= (u - 2))
+    if (t <= (u + 5) && t >= (u - 5))
         return true;
     return false;
 }
