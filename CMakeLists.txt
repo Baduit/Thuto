@@ -33,7 +33,10 @@ include_directories(Thutothmes PRIVATE
     )
 
 
+# Examples
 add_subdirectory(example)
+# TODO: Later copy the examples in a folder easier to access?
 
-enable_testing()
+# Tests
+enable_testing(MAKE_DIRECTORY test)
 add_subdirectory(test)
