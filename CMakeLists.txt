@@ -16,16 +16,26 @@ if(MSVC)
 	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /std:c++17")
 endif(MSVC)
 
+find_package(Threads)
+
 include_directories(Thutothmes PRIVATE
       ./src
+      ./src/Expected
+      ./src/Args
+      ./src/CondVar
+      ./src/Counter
+      ./src/NContainer
+      ./src/StringView
+      ./src/Threadpool
+      ./src/ThreadSafe
+      ./src/Timer
+      ./src/Variant
     )
 
-set(SRCS
-    ./example/main.cpp
-  )
 
-
-add_executable(expected_example ${SRCS})
+# Examples
+add_executable(counter_example ./example/Counter/counter_example_main.cpp)
+target_link_libraries(counter_example ${CMAKE_THREAD_LIBS_INIT})
 
 
 # Tests
@@ -39,6 +49,7 @@ add_test(test_cond_var_main test_cond_var_main.test)
 
 add_executable(test_counter_main.test ./test/Counter/test_counter_main.cpp)
 add_test(test_counter_main test_counter_main.test)
+target_link_libraries(test_counter_main.test ${CMAKE_THREAD_LIBS_INIT})
 
 add_executable(test_expected_main.test ./test/Expected/test_expected_main.cpp)
 add_test(test_expected_main test_expected_main.test)
