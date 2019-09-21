@@ -25,7 +25,7 @@ include_directories(Thutothmes PRIVATE
       ./src/CondVar
       ./src/Counter
       ./src/NContainer
-      ./src/StringView
+      ./src/StringViewAlgo
       ./src/Threadpool
       ./src/ThreadSafe
       ./src/Timer
