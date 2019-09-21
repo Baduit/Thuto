@@ -13,7 +13,16 @@ template<typename T, typename = typename std::enable_if_t<std::is_integral_v<T>>
 class BasicCounter
 {
 	public:
-		// Rule of 0
+		// Rule of 5 (+1)
+		BasicCounter() = default;
+
+		BasicCounter(const BasicCounter& other) = default;
+		BasicCounter& operator=(const BasicCounter& other) = default;
+
+		BasicCounter(BasicCounter&& other) = default;
+		BasicCounter operator=(BasicCounter&& other) = default;
+
+		virtual ~BasicCounter() = default;
 
 		// Integral values are normally about the same size as a pointer or shorter so no need to pass them as const&
 		T       get() const { return _value; }
