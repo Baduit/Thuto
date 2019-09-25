@@ -1,2 +1,0 @@
-add_executable(test_string_view_main.test test_string_view_main.cpp)
-add_test(test_string_view_main test_string_view_main.test)

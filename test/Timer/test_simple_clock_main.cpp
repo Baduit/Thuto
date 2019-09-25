@@ -13,10 +13,10 @@ void basic_usage()
 
 	Thuto::SimpleClock sc;
 	std::this_thread::sleep_for(10ms);
-	assert(almost_equal(nanoToMilli(sc.getTimeNanoCount()), 10));
+	assert(almost_equal(nanoToMilli(sc.get_time_nano_count()), 10));
 
 	sc.reset();
-	assert(almost_equal(sc.getDuractionAs<std::chrono::milliseconds>().count(), 0));
+	assert(almost_equal(sc.get_duraction_as<std::chrono::milliseconds>().count(), 0));
 }
 
 void copy()
@@ -26,7 +26,7 @@ void copy()
 		std::this_thread::sleep_for(20ms);
 
 		Thuto::SimpleClock sc2(sc1);
-		assert(almost_equal(sc1.getDuractionAs<std::chrono::milliseconds>().count(), sc2.getDuractionAs<std::chrono::milliseconds>().count()));
+		assert(almost_equal(sc1.get_duraction_as<std::chrono::milliseconds>().count(), sc2.get_duraction_as<std::chrono::milliseconds>().count()));
 	}
 
 	{
@@ -36,7 +36,7 @@ void copy()
 		Thuto::SimpleClock sc2;
 		std::this_thread::sleep_for(20ms);
 		sc2 = sc1;
-		assert(almost_equal(sc1.getDuractionAs<std::chrono::milliseconds>().count(), sc2.getDuractionAs<std::chrono::milliseconds>().count()));
+		assert(almost_equal(sc1.get_duraction_as<std::chrono::milliseconds>().count(), sc2.get_duraction_as<std::chrono::milliseconds>().count()));
 	}
 	
 }
