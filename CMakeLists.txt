@@ -29,6 +29,7 @@ include_directories(Thutothmes PRIVATE
       ./src/Threadpool
       ./src/ThreadSafe
       ./src/Timer
+      ./src/Type
       ./src/Variant
     )
 
