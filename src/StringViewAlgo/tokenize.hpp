@@ -38,7 +38,7 @@ namespace
 
 using namespace std::string_view_literals;
 
-template < template <typename> typename InputContainer = std::vector, typename StrView = std::string_view, template <typename> typename OutputContainer = std::vector>
+template < template <typename> typename InputContainer, typename StrView, template <typename> typename OutputContainer>
 OutputContainer<Token>	tokenize_impl(std::string_view str, InputContainer<StrView>&& delims)
 {
 	if (str.empty())
@@ -81,14 +81,14 @@ OutputContainer<Token>	tokenize_impl(std::string_view str, InputContainer<StrVie
 template <template <typename> typename InputContainer = std::vector, typename StrView = std::string_view, template <typename> typename OutputContainer = std::vector>
 OutputContainer<Token>	tokenize(std::string_view str, const InputContainer<StrView>& delims)
 {
-	return tokenize_impl(str, std::vector<StrView>(delims.begin(), delims.end()));
+	return tokenize_impl<InputContainer, StrView, OutputContainer>(str, std::vector<StrView>(delims.begin(), delims.end()));
 }
 
 // move/copy ellision
 template <template <typename> typename InputContainer = std::vector, typename StrView = std::string_view, template <typename> typename OutputContainer = std::vector>
 OutputContainer<Token>	tokenize(std::string_view str, InputContainer<StrView>&& delims)
 {
-	return tokenize_impl(str, std::move(delims));
+	return tokenize_impl<InputContainer, StrView, OutputContainer>(str, std::move(delims));
 }
 
 }
