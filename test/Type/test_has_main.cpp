@@ -15,6 +15,6 @@ struct NotSized {};
 
 int main()
 {
-    std::cout << has_size<Sized>() << std::endl;
-    std::cout << has_size<NotSized>() << std::endl;
+    std::cout << Thuto::has_method_size<Sized>() << std::endl;
+    std::cout << Thuto::has_method_size<NotSized>() << std::endl;
 }
