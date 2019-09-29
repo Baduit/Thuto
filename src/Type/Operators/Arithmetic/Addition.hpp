@@ -9,14 +9,6 @@
 namespace Thuto
 {
 
-namespace Details
-{
-
-template <typename Pair, std::size_t Index>
-using TypeInPair = decltype(std::get<Index>(std::declval<Pair>()));
-
-}
-
 template<typename Pair, typename _ = void>
 struct SfinaeHasOperator_addition_with : std::false_type {};
 
