@@ -56,16 +56,15 @@ void test_has_attribute()
 */
 struct WithOperator
 {
-    int operator++() { return 5; } // before
-    int operator++(int) { return 5; } // after
+    int operator++() { return 5; } // ++i so before
+    int operator++(int) { return 5; } // i++ so after
 };
 
 void test_has_operator()
 {
-    WithOperator test;
-    ++test;
-    assert(Thuto::has_operator_increment_after<WithOperator>());
-    assert(!Thuto::has_operator_increment_after<Nothing>());
+    assert(Thuto::has_operator_increment_before<WithOperator>());
+    assert(Thuto::has_operators_increment<WithOperator>());
+    assert(!Thuto::has_operator_increment_before<Nothing>());
 }
 
 
