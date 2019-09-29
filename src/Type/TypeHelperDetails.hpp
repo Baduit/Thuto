@@ -12,7 +12,7 @@ template<typename... Ts>
 struct SfinaeHelper {};
 
 template <typename Pair, std::size_t Index>
-using TypeInPair = decltype(std::get<Index>(std::declval<Pair>()));
+using TypeIn = decltype(std::get<Index>(std::declval<Pair>()));
 
 }
 

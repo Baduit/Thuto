@@ -21,7 +21,7 @@ struct SfinaeHasOperator_addition_with
 		false,
 		Details::SfinaeHelper
 		<
-            decltype(std::declval<Details::TypeInPair<Pair, 0>>() + std::declval<Details::TypeInPair<Pair, 1>>())
+            decltype(std::declval<Details::TypeIn<Pair, 0>>() + std::declval<Details::TypeIn<Pair, 1>>())
 		>,
 		void
 	>
