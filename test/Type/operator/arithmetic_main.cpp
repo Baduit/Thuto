@@ -9,12 +9,18 @@ struct WithOperator
 {
     int operator++() { return 5; } // ++i so before
     int operator++(int) { return 5; } // i++ so after
+
+    int operator+(const WithOperator&) { return 5; }
 };
 
 void test_has_operator()
 {
     assert(Thuto::has_operator_increment_before<WithOperator>());
+    assert(Thuto::has_operator_increment_after<WithOperator>());
     assert(Thuto::has_operators_increment<WithOperator>());
+
+    assert((Thuto::has_operator_addition_with<WithOperator, WithOperator>()));
+
     assert(!Thuto::has_operator_increment_before<Nothing>());
 }
 
