@@ -3,7 +3,7 @@
 
 #include "HasMethod.hpp"
 #include "HasAttribute.hpp"
-#include "HasType.hpp"
+#include "HasOperator.hpp"
 
 struct Nothing {};
 
@@ -52,28 +52,20 @@ void test_has_attribute()
 }
 
 /*
-** HAS_TYPE
+** HAS_OPERATOR
 */
-struct WithTypes
+struct WithOperator
 {
-    using value_type = int;
-    using allocator_type = int;
-    using size_type = int;
-    using difference_type = int;
-    using reference = int;
-    using const_reference = int;
-    using pointer = int;
-    using const_pointer = int;
-    using iterator = int;
-    using const_iterator = int;
-    using reverse_iterator = int;
-    using const_reverse_iterator = int;
+    int operator++() { return 5; } // before
+    int operator++(int) { return 5; } // after
 };
 
-void test_has_type()
+void test_has_operator()
 {
-    assert(Thuto::has_type_value_type<WithTypes>());
-    assert(!Thuto::has_type_value_type<Nothing>());
+    WithOperator test;
+    ++test;
+    assert(Thuto::has_operator_increment_after<WithOperator>());
+    assert(!Thuto::has_operator_increment_after<Nothing>());
 }
 
 
@@ -82,4 +74,5 @@ int main()
 {
     test_has_method();
     test_has_attribute();
+    test_has_operator();
 }
