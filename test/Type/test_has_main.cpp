@@ -2,7 +2,13 @@
 #include <cassert>
 
 #include "HasMethod.hpp"
+#include "HasAttribute.hpp"
 
+struct Nothing {};
+
+/*
+** HAS_METHOD
+*/
 struct Sized
 {
     std::size_t size()
@@ -11,10 +17,42 @@ struct Sized
     }
 };
 
-struct NotSized {};
+void test_has_method()
+{
+    assert(Thuto::has_method_size<Sized>());
+    assert(!Thuto::has_method_size<Nothing>());
+}
+
+/*
+** HAS_METHOD
+*/
+struct With_X_Y_Z_Width_Height
+{
+    int height;
+    int width;
+    int x;
+    int y;
+    int z;
+};
+
+void test_has_attribute()
+{
+    assert(Thuto::has_attribute_height<With_X_Y_Z_Width_Height>());
+    assert(Thuto::has_attribute_width<With_X_Y_Z_Width_Height>());
+    assert(Thuto::has_attribute_x<With_X_Y_Z_Width_Height>());
+    assert(Thuto::has_attribute_y<With_X_Y_Z_Width_Height>());
+    assert(Thuto::has_attribute_z<With_X_Y_Z_Width_Height>());
+
+    assert(!Thuto::has_attribute_height<Nothing>());
+    assert(!Thuto::has_attribute_width<Nothing>());
+    assert(!Thuto::has_attribute_x<Nothing>());
+    assert(!Thuto::has_attribute_y<Nothing>());
+    assert(!Thuto::has_attribute_z<Nothing>());
+}
+
 
 int main()
 {
-    std::cout << Thuto::has_method_size<Sized>() << std::endl;
-    std::cout << Thuto::has_method_size<NotSized>() << std::endl;
+    test_has_method();
+    test_has_attribute();
 }
