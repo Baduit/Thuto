@@ -3,6 +3,7 @@
 
 #include "HasMethod.hpp"
 #include "HasAttribute.hpp"
+#include "HasType.hpp"
 
 struct Nothing {};
 
@@ -24,7 +25,7 @@ void test_has_method()
 }
 
 /*
-** HAS_METHOD
+** HAS_ATTRIBUTE
 */
 struct With_X_Y_Z_Width_Height
 {
@@ -49,6 +50,32 @@ void test_has_attribute()
     assert(!Thuto::has_attribute_y<Nothing>());
     assert(!Thuto::has_attribute_z<Nothing>());
 }
+
+/*
+** HAS_TYPE
+*/
+struct WithTypes
+{
+    using value_type = int;
+    using allocator_type = int;
+    using size_type = int;
+    using difference_type = int;
+    using reference = int;
+    using const_reference = int;
+    using pointer = int;
+    using const_pointer = int;
+    using iterator = int;
+    using const_iterator = int;
+    using reverse_iterator = int;
+    using const_reverse_iterator = int;
+};
+
+void test_has_type()
+{
+    assert(Thuto::has_type_value_type<WithTypes>());
+    assert(!Thuto::has_type_value_type<Nothing>());
+}
+
 
 
 int main()
