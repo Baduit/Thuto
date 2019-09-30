@@ -1,5 +1,5 @@
 add_executable(test_has.test test_has_main.cpp)
-add_test(test_has test_has_main.test)
+add_test(test_has test_has.test)
 
 add_executable(arithmetic.test operator/arithmetic_main.cpp)
 add_test(arithmetic arithmetic.test)
