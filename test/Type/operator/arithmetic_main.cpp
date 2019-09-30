@@ -28,6 +28,11 @@ void test_has_operator()
     assert(!Thuto::has_operator_increment_before<Nothing>());
 }
 
+struct a
+{
+    virtual ~a();
+};
+
 int main()
 {
     test_has_operator();
