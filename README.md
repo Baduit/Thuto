@@ -13,5 +13,5 @@ __Work in progress__
 - __Threadpool__: A simple easy to use threadpool => _TO DO_
 - __ThreadSafeVar__: Wrapper around a variable to make it safer to user in a multi-threaded context. (Even if sending messages between threads is better than sharing ressources between thread)
 - __Timer__: timers wich can be pause, launch a callback after a timeout or in a regular interval. => DONE
-- __Type__: Check types at compile time. => _TO DO_
+- __Type__: Check types at compile time. => _TO COMPLETE_
 - __Variant__: add features to a std::variant to make it more user friendly. => _TO DO_
