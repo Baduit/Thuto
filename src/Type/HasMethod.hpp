@@ -20,7 +20,7 @@
 												false,																			\
 												Details::SfinaeHelper																	\
 												<																				\
-													decltype(std::declval<T>().method_name())									\
+													decltype(&T::method_name)									\
 												>,																				\
 												void																			\
 											>																					\
