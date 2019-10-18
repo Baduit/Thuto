@@ -5,7 +5,7 @@
 namespace Thuto
 {
 
-bool	start_with(std::string_view str, std::string_view substr)
+inline bool	start_with(std::string_view str, std::string_view substr)
 {
 	if (str.size() < substr.size())
 		return false;
