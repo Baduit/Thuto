@@ -31,6 +31,12 @@
 *.out
 *.app
 
+build_msvc
+build_gcc
+build_clang
+clang_build
+msvc_build
+gcc_build
 build
 .vscode
 .vs
