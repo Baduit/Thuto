@@ -5,13 +5,14 @@
 namespace thuto
 {
 
-struct Position2D
+template <typename T = std::size_t>
+struct Size2D
 {
-	std::size_t x = 0;
-	std::size_t y = 0;
+	T x = 0;
+	T y = 0;
 
-	friend bool operator==(const Position2D& a, const Position2D& b) = default;
-	friend std::strong_ordering operator<=>(const Position2D& a, const Position2D& b) = default;
+	friend bool operator==(const Size2D& a, const Size2D& b) = default;
+	friend std::strong_ordering operator<=>(const Size2D& a, const Size2D& b) = default;
 };
 
 } // namespace thuto
