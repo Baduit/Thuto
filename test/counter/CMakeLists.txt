@@ -1,0 +1,1 @@
+addTest(counter test_counter.cpp)
