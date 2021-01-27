@@ -3,7 +3,7 @@
 #include <mutex>
 #include <condition_variable>
 
-#include <Thuto/utils/Chrono.hpp>
+#include <Thuto/utils/Clock.hpp>
 
 namespace thuto
 {
