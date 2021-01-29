@@ -6,17 +6,19 @@ set(CMAKE_MODULE_PATH "${CMAKE_MODULE_PATH};${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 
 include(CPM)
 
-CPMAddPackage(
-	NAME ut
-	VERSION 1.1.8
-	GITHUB_REPOSITORY "boost-ext/ut"
-	GIT_TAG dbb3cabe219322f2ced8d87056c2421edd7cce2d
-)
-
 add_subdirectory(lib)
 add_subdirectory(bin)                    
                       
 include(CTest)
-include(addTest)
-enable_testing(MAKE_DIRECTORY test)
-add_subdirectory(test)
+if(BUILD_TESTING)
+	CPMAddPackage(
+		NAME ut
+		VERSION 1.1.8
+		GITHUB_REPOSITORY "boost-ext/ut"
+		GIT_TAG dbb3cabe219322f2ced8d87056c2421edd7cce2d
+	)
+
+	include(addTest)
+	enable_testing(MAKE_DIRECTORY test)
+	add_subdirectory(test)
+endif()
