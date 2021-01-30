@@ -1,5 +1,4 @@
 add_subdirectory(algorithms)
-add_subdirectory(container_adapters)
 add_subdirectory(containers)
 add_subdirectory(io)
 add_subdirectory(concurrency)

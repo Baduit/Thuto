@@ -2,7 +2,7 @@
 
 #include <iostream>
 
-namespace thuto
+namespace thuto::io
 {
 
 template <typename ...Args>
@@ -25,4 +25,4 @@ void println(Args&&... args)
 	(std::cout << ... << args) << std::endl;
 }
 
-} // namespace thuto
+} // namespace thuto::io
