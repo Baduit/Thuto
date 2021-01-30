@@ -8,7 +8,7 @@ namespace thuto::concurrency
 {
 
 // Can have several writer but only one reader
-template <typename Value>
+template <typename Value, typename Container = std::vector<Value>>
 class EventQueue
 {
 	public:
@@ -36,9 +36,9 @@ class EventQueue
 			return _collection.clear();
 		}
 
-		[[nodiscard]] std::vector<Value> get_all()
+		[[nodiscard]] typename Container get_all()
 		{
-			std::vector<Value> result;
+			Container result;
 			{
 				std::lock_guard guard(_mutex);
 				result.swap(_collection);
@@ -48,8 +48,8 @@ class EventQueue
 		}
 
 	private:
-		std::vector<Value>		_collection;
-		mutable std::mutex		_mutex;
+		Container _collection;
+		mutable std::mutex _mutex;
 };
 
 } // namespace thuto
