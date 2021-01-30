@@ -19,6 +19,5 @@ if(BUILD_TESTING)
 	)
 
 	include(addTest)
-	enable_testing(MAKE_DIRECTORY test)
 	add_subdirectory(test)
 endif()

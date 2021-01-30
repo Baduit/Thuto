@@ -9,24 +9,24 @@ template <typename It, typename Sentinel> requires std::sentinel_for<It, Sentine
 class OptionalIt
 {
 	public:
-		OptionalIt(It it, Sentinel end):
+		constexpr OptionalIt(It it, Sentinel end):
 			_it(it),
 			_end(end)
 		{}
 
-		OptionalIt(const OptionalIt&) = default;
-		OptionalIt& operator=(const OptionalIt&) = default;
+		constexpr OptionalIt(const OptionalIt&) = default;
+		constexpr OptionalIt& operator=(const OptionalIt&) = default;
 
-		OptionalIt(OptionalIt&&) = default;
-		OptionalIt& operator=(OptionalIt&&) = default;
+		constexpr OptionalIt(OptionalIt&&) = default;
+		constexpr OptionalIt& operator=(OptionalIt&&) = default;
 
-	explicit operator bool() const { return _it != _end; }
+	constexpr explicit operator bool() const { return _it != _end; }
 
-	It& operator->() { return _it; }
-	const It& operator->() const { return _it; }
+	constexpr It& operator->() { return _it; }
+	constexpr const It& operator->() const { return _it; }
 
-	auto& operator*() { return *_it; }
-	const auto& operator*() const { return *_it; }
+	constexpr auto& operator*() { return *_it; }
+	constexpr const auto& operator*() const { return *_it; }
 
 	private:
 		It _it;
