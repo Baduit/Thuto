@@ -58,7 +58,7 @@ class EventQueue
 			return _collection.clear();
 		}
 
-		[[nodiscard]] typename Container get_all()
+		[[nodiscard]] Container get_all()
 		{
 			Container result;
 			{

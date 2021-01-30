@@ -1,5 +1,4 @@
 add_subdirectory(containers)
 add_subdirectory(io)
 add_subdirectory(concurrency)
-add_subdirectory(tuple)
 add_subdirectory(utils)
