@@ -10,20 +10,20 @@ namespace thuto::concurrency
 {
 
 // Can have several writer but only one reader
-template <typename Value, typename Container = std::vector<Value>>
+template <typename Event, typename Container = std::vector<Event>>
 class EventQueue
 {
 	public:
-		void push(const Value& t)
+		void push(const Event& t)
 		{
 			std::lock_guard guard(_mutex);
 			std::back_inserter(_collection) = t;
 		}
 
-		void push(Value&& t)
+		void push(Event&& t)
 		{
 			std::lock_guard guard(_mutex);
-			std::back_inserter(_collection) = std::forward<Value>(t);
+			std::back_inserter(_collection) = std::forward<Event>(t);
 		}
 
 		template <std::ranges::input_range Range>
