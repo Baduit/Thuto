@@ -74,4 +74,4 @@ class EventQueue
 		mutable std::mutex _mutex;
 };
 
-} // namespace thuto
+} // namespace thuto::concurrency

@@ -1,1 +1,1 @@
-#addTest(first first_test.cpp)
+addTest(vector2d test_vector2d.cpp)

@@ -31,4 +31,19 @@ class Exception : public std::exception
 		std::runtime_error _exception;
 };
 
-} // namespace thuto
+class OutOfRange : public Exception
+{
+	public:
+		OutOfRange(const std::string& what_arg):
+			Exception(what_arg)
+		{}
+
+		OutOfRange(const char* what_arg):
+			Exception(what_arg)
+		{}
+
+		OutOfRange(const OutOfRange&) noexcept = default;
+		OutOfRange& operator=(const OutOfRange&) noexcept = default;
+};
+
+} // namespace thuto::details
