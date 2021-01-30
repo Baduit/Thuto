@@ -54,11 +54,6 @@ int main()
 			expect(const_second_line[2] == 0);
 
 
-			std::cout << "--------------" << std::endl;
-			for (auto i: v.get_container())
-			{
-				std::cout << i << std::endl;
-			}
-			std::cout << "---------------" << std::endl;
+			//auto first_column = v.get_column(0);
 		};
 }

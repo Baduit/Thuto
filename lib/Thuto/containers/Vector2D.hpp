@@ -47,7 +47,24 @@ class Vector2D
 			return std::span<const T>(line_begin, line_length);
 		}
 
-		// TODO : get_column
+		// Range support is not here yet on msvc
+		/* constexpr auto get_column(std::size_t column_number)
+		{
+			if (column_number >= _size.y)
+				throw details::OutOfRange();
+		
+			auto is_column =
+				[&](const T&)
+				{
+					static int i = 0;
+					bool result = ((i % 3) == column_number);
+					++i;
+					return result;
+				};
+
+			return (_container | std::views::filter(is_column));
+		} */
+
  
 		constexpr T& at(std::size_t x, std::size_t y)
 		{
