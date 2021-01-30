@@ -1,6 +1,8 @@
 #pragma once
 
 #include <vector>
+#include <span>
+#include <ranges>
 
 #include <Thuto/utils/Pos2D.hpp>
 #include <Thuto/utils/Size2D.hpp>
@@ -30,13 +32,6 @@ class Vector2D
 
 		constexpr Vector2D(Vector2D&&) = default;
 		constexpr Vector2D& operator=(Vector2D&&) = default;
-
-		constexpr void	resize(std::size_t x, std::size_t y)
-		{
-			_size = {x, y};
-			_container.resize(x * y);
-		}
-
 
 		// TODO : get_line and get_column
  
