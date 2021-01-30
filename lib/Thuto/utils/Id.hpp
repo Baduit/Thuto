@@ -23,10 +23,10 @@ class Id final
 		constexpr auto operator<=>(const Id&) const = default;
 
 		// Maybe later randomize so people can't guess id
-		static Id generate() { return Id(next_id_value++); }
+		[[nodiscard]] static Id generate() { return Id(next_id_value++); }
 
-		constexpr uint64_t operator*() const { return get_value(); }
-		constexpr uint64_t get_value() const { return value; }
+		[[nodiscard]] constexpr uint64_t operator*() const { return get_value(); }
+		[[nodiscard]] constexpr uint64_t get_value() const { return value; }
 
 	private:
 		uint64_t value = 0;

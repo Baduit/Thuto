@@ -26,17 +26,17 @@ class SimpleClock
 
 		virtual ~SimpleClock() = default;
 
-		void		reset() { _first = std::chrono::system_clock::now(); }
+		void reset() { _first = std::chrono::system_clock::now(); }
 		
-		Duration	get_time_duration() { return std::chrono::system_clock::now() - _first; }
+		[[nodiscard]] Duration get_time_duration() { return std::chrono::system_clock::now() - _first; }
 
 		template<typename T>
-		auto		get_duration_as() { return std::chrono::duration_cast<T>(get_time_duration()); }
+		[[nodiscard]] auto get_duration_as() { return std::chrono::duration_cast<T>(get_time_duration()); }
 
-		int64_t		get_time_nano_count() { return get_duration_as<std::chrono::nanoseconds>().count(); }
+		[[nodiscard]] int64_t get_time_nano_count() { return get_duration_as<std::chrono::nanoseconds>().count(); }
 
 	private:
-		std::chrono::system_clock::time_point	_first;
+		std::chrono::system_clock::time_point _first;
 };
 
 /*
@@ -57,36 +57,36 @@ class AdvancedClock
 
 		virtual ~AdvancedClock() = default;
 
-		void		reset()
+		void reset()
 		{
 			_run_timer.reset();
 			_pause_timer.reset();
 			_paused_time = {};
 		}
 		
-		auto		get_time_duration()
+		[[nodiscard]] auto get_time_duration()
 		{
 			return _run_timer.get_time_duration() - get_total_pause_time();
 		}
 
 		template<typename T>
-		auto		get_duration_as()
+		[[nodiscard]] auto get_duration_as()
 		{
 			return _run_timer.get_duration_as<T>() - get_total_pause_time_as<T>();
 		}
 
-		int64_t		get_time_nano_count()
+		[[nodiscard]] int64_t get_time_nano_count()
 		{
 			return _run_timer.get_time_nano_count() - get_total_pause_time_nano_count();
 		}
 
-		void		pause()
+		void pause()
 		{
 			if (!_pause_timer.has_value())
 				_pause_timer.emplace();
 		}
 
-		void		start()
+		void start()
 		{
 			if (_pause_timer.has_value())
 			{
@@ -95,21 +95,21 @@ class AdvancedClock
 			}
 		}
 
-		Duration	get_total_pause_time()
+		[[nodiscard]] Duration get_total_pause_time()
 		{
 			return (_pause_timer.has_value()) ? _paused_time + _pause_timer->get_time_duration() : _paused_time;
 		}
 
 		template<typename T>
-		auto 	get_total_pause_time_as() { return std::chrono::duration_cast<T>(get_total_pause_time()); }
+		[[nodiscard]] auto  get_total_pause_time_as() { return std::chrono::duration_cast<T>(get_total_pause_time()); }
 
 
-		int64_t	get_total_pause_time_nano_count() { return get_total_pause_time_as<std::chrono::nanoseconds>().count(); }
+		[[nodiscard]] int64_t get_total_pause_time_nano_count() { return get_total_pause_time_as<std::chrono::nanoseconds>().count(); }
 
 	private:
-		SimpleClock						_run_timer;
-		std::optional<SimpleClock>		_pause_timer;
-		Duration						_paused_time;
+		SimpleClock _run_timer;
+		std::optional<SimpleClock> _pause_timer;
+		Duration _paused_time;
 };
 
 } // namespace thuto

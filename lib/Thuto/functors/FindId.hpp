@@ -34,19 +34,19 @@ struct FindId
 	{}
 
 	template <IdGetterSnakeCase T>
-	bool operator()(const T& identifiable)
+	[[nodiscard]] bool operator()(const T& identifiable)
 	{
 		return identifiable.get_id() == _id_to_find;
 	}
 
 	template <IdGetterCamelCase T>
-	bool operator()(const T& identifiable)
+	[[nodiscard]] bool operator()(const T& identifiable)
 	{
 		return identifiable.getId() == _id_to_find;
 	}
 
 	template <IdAttribute T>
-	bool operator()(const T& identifiable)
+	[[nodiscard]] bool operator()(const T& identifiable)
 	{
 		return identifiable.id == _id_to_find;
 	}

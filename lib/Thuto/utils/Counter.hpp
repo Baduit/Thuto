@@ -24,9 +24,9 @@ class BasicCounter
 		virtual ~BasicCounter() = default;
 
 		// std::integral values are normally about the same size as a pointer or shorter so no need to pass them as const&
-		constexpr T       operator*() const { return _value; }
-		constexpr T       get() const { return _value; }
-		constexpr void    reset() { _value = 0; }
+		[[nodiscard]] constexpr T operator*() const { return _value; }
+		[[nodiscard]] constexpr T get() const { return _value; }
+		constexpr void reset() { _value = 0; }
 
 		constexpr BasicCounter&   operator++() { ++_value; return *this; }
 		constexpr BasicCounter&   operator++(int) { _value++; return *this; }
@@ -55,9 +55,9 @@ class BasicAtomicCounter
 		virtual ~BasicAtomicCounter() = default;
 
 		// with an atomic value we can only access a copy of the value (and return the atomic directly does not seem like a good idea)
-		T       operator*() const { return _value.load(); }
-		T       get() const { return _value.load(); }
-		void    reset() { _value.store(0); }
+		[[nodiscard]] T operator*() const { return _value.load(); }
+		[[nodiscard]] T get() const { return _value.load(); }
+		void reset() { _value.store(0); }
 
 		BasicAtomicCounter&   operator++() { _value.fetch_add(1); return *this; }
 		BasicAtomicCounter&   operator++(int) { _value.fetch_add(1); return *this; }
@@ -105,9 +105,9 @@ class BasicMutexCounter
 		virtual ~BasicMutexCounter() = default;
 
 		// never return reference to something you want to protect with a mutex
-		T		operator*() const { return get(); }
+		[[nodiscard]] T operator*() const { return get(); }
 
-		T       get() const
+		[[nodiscard]] T get() const
 		{
 			std::lock_guard	lock(_mutex);
 			return _value;
@@ -188,9 +188,9 @@ class BasicSharedMutexCounter
 		virtual ~BasicSharedMutexCounter() = default;
 
 		// never return reference to something you want to protect with a mutex
-		T		operator*() const { return get(); }
+		[[nodiscard]] T operator*() const { return get(); }
 		
-		T       get() const
+		[[nodiscard]] T get() const
 		{
 			std::shared_lock	lock(_mutex);
 			return _value;
