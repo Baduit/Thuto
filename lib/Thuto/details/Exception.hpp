@@ -24,6 +24,8 @@ class Exception : public std::exception
 			return _exception.what();
 		}
 
+		// When source location is available add a where method
+
 
 	private:
 		// I use a std::runtime_error just to store the string
@@ -34,12 +36,9 @@ class Exception : public std::exception
 class OutOfRange : public Exception
 {
 	public:
-		OutOfRange(const std::string& what_arg):
-			Exception(what_arg)
-		{}
-
-		OutOfRange(const char* what_arg):
-			Exception(what_arg)
+		// When source location is available use it
+		OutOfRange():
+			Exception("Out of range.")
 		{}
 
 		OutOfRange(const OutOfRange&) noexcept = default;
