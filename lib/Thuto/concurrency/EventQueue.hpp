@@ -3,6 +3,8 @@
 #include <iterator>
 #include <vector>
 #include <mutex>
+#include <algorithm>
+#include <ranges>
 
 namespace thuto::concurrency
 {
@@ -24,10 +26,30 @@ class EventQueue
 			std::back_inserter(_collection) = std::forward<Value>(t);
 		}
 
+		template <std::ranges::input_range Range>
+		void push(const Range& r)
+		{
+			std::lock_guard guard(_mutex);
+			std::copy(std::ranges::cbegin(r), std::ranges::cend(r), std::back_inserter(_collection));
+		}
+
+		template <std::ranges::input_range Range>
+		void push(Range&& r)
+		{
+			std::lock_guard guard(_mutex);
+			std::ranges::move(r, std::back_inserter(_collection));
+		}
+
 		[[nodiscard]] bool empty() const
 		{
 			std::lock_guard guard(_mutex);
 			return _collection.empty();
+		}
+
+		[[nodiscard]] auto size() const
+		{
+			std::lock_guard guard(_mutex);
+			return _collection.size();
 		}
 
 		void clear()
