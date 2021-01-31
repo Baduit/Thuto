@@ -52,8 +52,5 @@ int main()
 			expect(const_second_line[0] == 3);
 			expect(const_second_line[1] == 4);
 			expect(const_second_line[2] == 0);
-
-
-			//auto first_column = v.get_column(0);
 		};
 }
