@@ -1,2 +1,0 @@
-add_executable(test_thread_safe_main.test test_thread_safe_main.cpp)
-add_test(test_thread_safe_main test_thread_safe_main.test)

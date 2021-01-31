@@ -1,2 +1,0 @@
-add_executable(counter_example counter_example_main.cpp)
-target_link_libraries(counter_example ${CMAKE_THREAD_LIBS_INIT})

@@ -1,2 +1,0 @@
-add_executable(test_variant_main.test test_variant_main.cpp)
-add_test(test_variant_main test_variant_main.test)

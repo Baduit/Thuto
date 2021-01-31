@@ -1,2 +1,0 @@
-add_executable(test_n_container_main.test test_n_container_main.cpp)
-add_test(test_n_container_main test_n_container_main.test)
