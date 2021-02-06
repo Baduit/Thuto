@@ -42,4 +42,4 @@ inline std::ostream& operator<<(std::ostream& os, const Id& id)
 }
 
 
-} namespace thuto
+} // namespace thuto
