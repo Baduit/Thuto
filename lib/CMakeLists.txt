@@ -1,4 +1,3 @@
-
 set(SRCS
     ${CMAKE_CURRENT_LIST_DIR}/Thuto/details/Exception.cpp
     ${CMAKE_CURRENT_LIST_DIR}/Thuto/process/Popen.cpp
