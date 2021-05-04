@@ -4,6 +4,7 @@ set(SRCS
     ${CMAKE_CURRENT_LIST_DIR}/Thuto/utils/Clock.cpp
     ${CMAKE_CURRENT_LIST_DIR}/Thuto/utils/Env.cpp
     ${CMAKE_CURRENT_LIST_DIR}/Thuto/utils/Random.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/Thuto/io/CFileHandler.cpp
 )
 
 add_library(Thuto  ${SRCS})
