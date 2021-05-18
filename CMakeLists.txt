@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.12)
 
-project(ThutoLibrary VERSION 0.2.2 DESCRIPTION "Misc library")
+project(ThutoLibrary VERSION 1.0.0 DESCRIPTION "Misc library")
 
 set(CMAKE_MODULE_PATH "${CMAKE_MODULE_PATH};${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 
