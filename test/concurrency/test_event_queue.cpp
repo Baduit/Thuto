@@ -1,7 +1,7 @@
 #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
 #include <doctest/doctest.h>
 
-
+#include <array>
 #include <algorithm>
 #include <string_view>
 #include <vector>
