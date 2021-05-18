@@ -1,4 +1,4 @@
-#include <Thuto/details/Exception.hpp>
+#include <thuto/details/Exception.hpp>
 
 namespace thuto
 {

@@ -1,4 +1,4 @@
-#include <Thuto/utils/Random.hpp>
+#include <thuto/utils/Random.hpp>
 
 namespace thuto
 {

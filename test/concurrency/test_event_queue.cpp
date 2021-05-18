@@ -9,7 +9,7 @@
 #include <deque>
 #include <thread>
 
-#include <Thuto/concurrency/EventQueue.hpp>
+#include <thuto/concurrency/EventQueue.hpp>
 
 TEST_CASE("basic")
 {

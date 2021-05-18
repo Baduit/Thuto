@@ -6,7 +6,7 @@
 #include <vector>
 #include <list>
 
-#include <Thuto/utils/OptionalIt.hpp>
+#include <thuto/utils/OptionalIt.hpp>
 
 TEST_CASE("basic")
 {

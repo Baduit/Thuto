@@ -1,4 +1,4 @@
-#include <Thuto/process/Popen.hpp>
+#include <thuto/process/Popen.hpp>
 
 namespace thuto
 {

@@ -1,7 +1,7 @@
 #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
 #include <doctest/doctest.h>
 
-#include <Thuto/containers/Array2D.hpp>
+#include <thuto/containers/Array2D.hpp>
 
 TEST_CASE("basic")
 {

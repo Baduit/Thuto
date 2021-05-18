@@ -1,4 +1,4 @@
-#include <Thuto/utils/Env.hpp>
+#include <thuto/utils/Env.hpp>
 
 #include <cstdlib>
 

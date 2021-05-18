@@ -1,4 +1,4 @@
-#include <Thuto/io/CFileHandler.hpp>
+#include <thuto/io/CFileHandler.hpp>
 
 namespace thuto
 {

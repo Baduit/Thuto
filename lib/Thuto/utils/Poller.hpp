@@ -2,7 +2,7 @@
 
 #include <atomic>
 
-#include <Thuto/utils/Sleeper.hpp>
+#include <thuto/utils/Sleeper.hpp>
 
 namespace thuto
 {

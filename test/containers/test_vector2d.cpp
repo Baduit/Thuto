@@ -1,7 +1,7 @@
 #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
 #include <doctest/doctest.h>
 
-#include <Thuto/containers/Vector2D.hpp>
+#include <thuto/containers/Vector2D.hpp>
 
 
 TEST_CASE("basic")

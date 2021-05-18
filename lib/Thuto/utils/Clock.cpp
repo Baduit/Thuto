@@ -1,4 +1,4 @@
-#include <Thuto/utils/Clock.hpp>
+#include <thuto/utils/Clock.hpp>
 
 namespace thuto
 {

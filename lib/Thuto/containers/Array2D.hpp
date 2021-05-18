@@ -4,9 +4,9 @@
 #include <span>
 #include <ranges>
 
-#include <Thuto/utils/Pos2D.hpp>
-#include <Thuto/utils/Size2D.hpp>
-#include <Thuto/details/Exception.hpp>
+#include <thuto/utils/Pos2D.hpp>
+#include <thuto/utils/Size2D.hpp>
+#include <thuto/details/Exception.hpp>
 
 namespace thuto
 {

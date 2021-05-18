@@ -1,7 +1,7 @@
 #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
 #include <doctest/doctest.h>
 
-#include <Thuto/utils/Counter.hpp>
+#include <thuto/utils/Counter.hpp>
 
 TEST_CASE("test_basic_counter")
 {
