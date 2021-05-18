@@ -2,7 +2,7 @@
 
 #include <concepts>
 
-namespace thuto::functors
+namespace thuto
 {
 
 template <typename T>
@@ -54,4 +54,4 @@ struct FindId
 	IdType _id_to_find;
 };
 
-} // namespace thuto::functors
+} // namespace thuto

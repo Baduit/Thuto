@@ -1,6 +1,6 @@
 #pragma once
 
-namespace thuto::functors
+namespace thuto
 {
 
 class OneEvery

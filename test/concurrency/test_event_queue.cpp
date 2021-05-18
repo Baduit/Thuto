@@ -13,7 +13,7 @@
 
 TEST_CASE("basic")
 {
-	thuto::concurrency::EventQueue<int> e;
+	thuto::EventQueue<int> e;
 	e.push(5);
 	const int a = 3;
 	e.push(a);
@@ -44,7 +44,7 @@ TEST_CASE("basic")
 
 TEST_CASE("deque")
 {
-	thuto::concurrency::EventQueue<int, std::deque<int>> e;
+	thuto::EventQueue<int, std::deque<int>> e;
 	e.push(5);
 	const int a = 3;
 	e.push(a);
@@ -74,7 +74,7 @@ TEST_CASE("deque")
 
 TEST_CASE("list")
 {
-	thuto::concurrency::EventQueue<int, std::list<int>> e;
+	thuto::EventQueue<int, std::list<int>> e;
 	e.push(5);
 	const int a = 3;
 	e.push(a);
@@ -117,7 +117,7 @@ TEST_CASE("list")
 TEST_CASE("non_copyable")
 {
 	// A thread is not copyable
-	thuto::concurrency::EventQueue<std::thread> event_queue;
+	thuto::EventQueue<std::thread> event_queue;
 
 	{
 		std::vector<std::thread> data;

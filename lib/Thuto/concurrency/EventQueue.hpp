@@ -6,7 +6,7 @@
 #include <algorithm>
 #include <ranges>
 
-namespace thuto::concurrency
+namespace thuto
 {
 
 // Can have several writer but only one reader
@@ -74,4 +74,4 @@ class EventQueue
 		mutable std::mutex _mutex;
 };
 
-} // namespace thuto::concurrency
+} // namespace thuto
