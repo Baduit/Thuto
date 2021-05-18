@@ -19,10 +19,9 @@ if (TESTS)
 	include(CTest)
 	if(BUILD_TESTING)
 		CPMAddPackage(
-			NAME ut
-			VERSION 1.1.8
-			GITHUB_REPOSITORY "boost-ext/ut"
-			GIT_TAG dbb3cabe219322f2ced8d87056c2421edd7cce2d
+			NAME doctest
+			GITHUB_REPOSITORY onqtam/doctest
+			GIT_TAG 2.4.5
 		)
 
 		include(addTest)
