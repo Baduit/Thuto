@@ -25,7 +25,7 @@ concept WritableElement =
 template <typename T>
 concept WritableRange =
 	std::ranges::contiguous_range<T> &&
-	WritableElement<typename T::range_value_t>;
+	WritableElement<typename std::ranges::range_value_t<T>>;
 
 
 
@@ -46,6 +46,8 @@ class CFileHandler
 		CFileHandler(CFileHandler&&) = default;
 		CFileHandler& operator=(CFileHandler&&) = default;
 
+		virtual ~CFileHandler() = default;
+
 		operator bool();
 
 		void close();
@@ -55,14 +57,14 @@ class CFileHandler
 		std::size_t write(const void* buffer, std::size_t size, std::size_t count);
 
 		template <WritableRange Range>
-		std::size_t read(const Range& r, std::size_t count)
+		std::size_t read(Range& r, std::size_t count)
 		{
-			using Element = typename Range::range_value_t;
+			using Element = typename std::ranges::range_value_t<Range>;
 			return read(std::ranges::data(r), sizeof(Element), count);
 		}
 
 		template <WritableRange Range>
-		std::size_t read(const Range& r)
+		std::size_t read(Range& r)
 		{
 			return read(r, std::ranges::size(r));
 		}
@@ -70,7 +72,7 @@ class CFileHandler
 		template <WritableRange Range>
 		std::size_t write(const Range& r, std::size_t count)
 		{
-			using Element = typename Range::range_value_t;
+			using Element = typename std::ranges::range_value_t<Range>;
 			return write(std::ranges::data(r), sizeof(Element), count);
 		}
 
@@ -92,6 +94,57 @@ class CFileHandler
 
 	private:
 		std::unique_ptr<std::FILE, Deleter> _handle = nullptr;
+};
+
+class ReadOnlyCFileHandler : public CFileHandler
+{
+	public:
+		using CFileHandler::CFileHandler;
+
+		ReadOnlyCFileHandler() = default;
+		ReadOnlyCFileHandler(CFileHandler handle):
+			CFileHandler(std::move(handle))
+		{}
+
+		ReadOnlyCFileHandler(const ReadOnlyCFileHandler&) = delete;
+		ReadOnlyCFileHandler& operator=(const ReadOnlyCFileHandler&) = delete;
+
+		ReadOnlyCFileHandler(ReadOnlyCFileHandler&&) = default;
+		ReadOnlyCFileHandler& operator=(ReadOnlyCFileHandler&&) = default;
+
+
+		template <WritableRange Range>
+		std::size_t write(const Range& r, std::size_t count) = delete;
+
+		template <WritableRange Range>
+		std::size_t write(const Range& r) = delete;
+
+		std::size_t write(const void* buffer, std::size_t size, std::size_t count) = delete;
+};
+
+class WriteOnlyCFileHandler : public CFileHandler
+{
+	public:
+		using CFileHandler::CFileHandler;
+
+		WriteOnlyCFileHandler() = default;
+		WriteOnlyCFileHandler(CFileHandler handle):
+			CFileHandler(std::move(handle))
+		{}
+
+		WriteOnlyCFileHandler(const WriteOnlyCFileHandler&) = delete;
+		WriteOnlyCFileHandler& operator=(const WriteOnlyCFileHandler&) = delete;
+
+		WriteOnlyCFileHandler(WriteOnlyCFileHandler&&) = default;
+		WriteOnlyCFileHandler& operator=(WriteOnlyCFileHandler&&) = default;
+
+		std::size_t read(void* buffer, std::size_t size, std::size_t count) = delete;
+
+		template <WritableRange Range>
+		std::size_t read(Range& r, std::size_t count) = delete;
+
+		template <WritableRange Range>
+		std::size_t read(Range& r) = delete;
 };
 
 } // namespace thuto
