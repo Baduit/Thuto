@@ -5,6 +5,7 @@ set(SRCS
     ${CMAKE_CURRENT_LIST_DIR}/thuto/utils/Env.cpp
     ${CMAKE_CURRENT_LIST_DIR}/thuto/utils/Random.cpp
     ${CMAKE_CURRENT_LIST_DIR}/thuto/io/CFileHandler.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/thuto/io/file.cpp
 )
 
 add_library(thuto  ${SRCS})

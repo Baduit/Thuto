@@ -1,1 +1,1 @@
-#addTest(first first_test.cpp)
+addTest(file test_file.cpp)
