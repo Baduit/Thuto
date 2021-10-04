@@ -1,0 +1,1 @@
+addTest(popen test_popen.cpp)

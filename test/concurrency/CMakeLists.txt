@@ -1,0 +1,1 @@
+addTest(event_queue test_event_queue.cpp)
